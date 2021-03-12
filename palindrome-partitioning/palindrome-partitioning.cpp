@@ -20,7 +20,7 @@ public:
         
         for(int k=start;k<=end;k++) {
             if(isPalindrome(s, start, k)){
-                v.push_back(s.substr(start, k-start+1));
+                v.emplace_back(s.substr(start, k-start+1));
                 helper(s,v, k+1, end);
                 if(!v.empty())
                     v.pop_back();
