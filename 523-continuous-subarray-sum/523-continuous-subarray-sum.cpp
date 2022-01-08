@@ -4,15 +4,16 @@ public:
         if(nums.size() == 1)
             return false;
         unordered_map<int, int> modMap;
+        unordered_map<int, int>::iterator itr;
         modMap.insert({0, -1});
-        int curSum = 0;
+        int modk, curSum = 0;
         for(int i=0;i<nums.size();i++) {
             
             curSum += nums[i];
             // cout<<"CurSum "<<curSum<<endl;
-            int modk = curSum%k;
+            modk = curSum%k;
             // cout<<"ModK "<<modk<<endl;
-            auto itr = modMap.find(modk);
+            itr = modMap.find(modk);
             if(itr!=modMap.end()) {
                 // cout<<"Searching"<<endl;
                 // cout<<itr->second<<endl;
