@@ -14,20 +14,14 @@ public:
             }
         }
         
-        vector<pair<char,int>> v;
-        for(auto itr : m) {
-            v.push_back({itr.first, itr.second});
-        }
-        
-        sort(v.begin(), v.end(), [](const pair<char,int> &a, const pair<char,int>&b) {
-            return a.second > b.second;
+        sort(s.begin(), s.end(), [&m](const char &a, const char &b) {
+            int aCount = m[a];
+            int bCount = m[b];
+            if(aCount == bCount)
+                return a > b;
+            return aCount>bCount;
         });
         
-        string sorted = "";
-        for(auto p : v) {
-            for(int j=0;j<p.second;j++)
-                sorted += p.first;
-        }
-        return sorted;
+        return s;
     }
 };
