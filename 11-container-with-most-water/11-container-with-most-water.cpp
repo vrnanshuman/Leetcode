@@ -6,7 +6,10 @@ public:
         
         while(l<r) {
             maxWater = max(maxWater, (r-l)*min(height[l], height[r]));
-            if(height[l] < height[r])
+            if(height[l] == height[r]) {
+                l++;
+                r--;
+            } else if(height[l] < height[r])
                 l++;
             else
                 r--;     
