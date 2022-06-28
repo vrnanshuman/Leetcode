@@ -30,21 +30,21 @@ public:
         vector<vector<bool>> visited(image.size(), vector<bool>(image[0].size(),false));
         queue<pair<int,int>> q;
         q.push({sr,sc});
-        visited[sr][sc] = true;
+        image[sr][sc] = color;
+        // visited[sr][sc] = true;
         
         while(!q.empty()) {
             tmp = q.front();
             q.pop();
             row = tmp.first;
             col = tmp.second;
-            image[row][col] = color;
             
             for(auto neighbor : neighbors) {
                 nrow = row+neighbor.first;
                 ncol = col+neighbor.second;
-                if(isValid(image, nrow, ncol) && !visited[nrow][ncol] && image[nrow][ncol] == originalColor) {
+                if(isValid(image, nrow, ncol) && image[nrow][ncol] == originalColor) {
+                    image[nrow][ncol] = color;
                     q.push({nrow,ncol});
-                    visited[nrow][ncol] = true;
                 }
             }
             
