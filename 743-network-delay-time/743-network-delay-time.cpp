@@ -38,7 +38,8 @@ public:
         while(!min_heap.empty()) {
             top = min_heap.top();
             min_heap.pop();
-            
+            if(visited[top.dest])
+                continue;
             visited[top.dest] = 1;
             
 
