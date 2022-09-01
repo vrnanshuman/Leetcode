@@ -26,6 +26,22 @@ public:
         return retval;
     }
     
+    bool checkLetters() {
+        unordered_set<char> s;
+        for(int i=0;i<m;i++) {
+            for(int j=0;j<n;j++) {
+                s.insert(b[i][j]);
+            }
+        }
+        
+        for(int i=0;i<w.length();i++) {
+            auto itr = s.find(w[i]);
+            if(itr==s.end())
+                return false;
+        }
+        return true;
+    }
+    
     bool exist(vector<vector<char>>& board, string word) {
         b = board;
         visited = vector<vector<bool>>(board.size(), vector<bool>(board[0].size(), false));
@@ -33,6 +49,9 @@ public:
         m = board.size();
         n = board[0].size();
         int currentIdx = 0;
+        
+        if(!checkLetters())
+            return false;
 
         for(int i=0;i<board.size();i++) {
             for(int j=0;j<board[0].size();j++) {
