@@ -10,17 +10,17 @@ public:
         if(idx == str.length())
             return true;
         if(t[idx]!=-1)
-            return t[idx];
+            return t[idx]==0 ?false:true;
         for(int i=1;i<=str.length();i++) {
             string tmp = str.substr(idx,i);
             if(m.find(tmp) != m.end()) {
                 if(process(idx+i)) {
-                    t[idx] = true;
+                    t[idx] = 1;
                     return true;
                 }
             }
         }
-        t[idx] = false;
+        t[idx] = 0;
         return false;
     }
     
